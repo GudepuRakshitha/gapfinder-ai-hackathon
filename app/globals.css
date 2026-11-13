@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f7fb;
+  --foreground: #171526;
+  --brand: #6d4aff;
+  --brand-dark: #5535e8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --animate-fade-in: fade-in 0.35s ease-out both;
+  --animate-slide-up: slide-up 0.35s ease-out both;
+  --animate-shimmer: shimmer 1.8s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #ddd6fe;
+  color: #2e1065;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d8 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 999px;
+}
+
+.brand-gradient {
+  background-image: linear-gradient(135deg, #6d4aff 0%, #8b5cf6 45%, #3b82f6 100%);
+}
+
+.brand-text-gradient {
+  background-image: linear-gradient(120deg, #5535e8 0%, #7c3aed 55%, #2563eb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mesh-background {
+  background-color: #f7f7fb;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(109, 74, 255, 0.16) 0px, transparent 50%),
+    radial-gradient(at 95% 5%, rgba(59, 130, 246, 0.12) 0px, transparent 45%),
+    radial-gradient(at 50% 100%, rgba(167, 139, 250, 0.14) 0px, transparent 50%);
+}
+
+.grid-background {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.prose-answer {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #ececf1 25%, #f5f5f8 37%, #ececf1 63%);
+  background-size: 800px 100%;
+  animation: shimmer 1.8s linear infinite;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+  .print-block {
+    break-inside: avoid;
+  }
 }
