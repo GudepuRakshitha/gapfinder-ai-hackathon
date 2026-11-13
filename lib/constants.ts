@@ -100,6 +100,13 @@ export const NAV_ITEMS = [
     icon: "MessageCircleQuestion",
     group: "Insights",
   },
+  {
+    href: "/about",
+    label: "About the Developer",
+    description: "Portfolio of Gudepu Rakshitha Reddy",
+    icon: "UserRound",
+    group: "About",
+  },
 ] as const;
 
 export const PAGE_META: Record<
@@ -137,6 +144,10 @@ export const PAGE_META: Record<
   "/tutor": {
     title: "AI tutor",
     subtitle: "Answers grounded in your uploaded material, with citations.",
+  },
+  "/about": {
+    title: "About the Developer",
+    subtitle: "Portfolio of Gudepu Rakshitha Reddy — CS engineer, AI/ML builder and researcher.",
   },
   "/login": {
     title: "Welcome back",

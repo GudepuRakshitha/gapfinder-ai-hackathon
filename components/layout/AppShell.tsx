@@ -37,6 +37,7 @@ const ICONS = {
   CalendarCheck,
   TrendingUp,
   MessageCircleQuestion,
+  UserRound,
 } as const;
 
 function Logo({ compact = false }: { compact?: boolean }) {
@@ -61,7 +62,7 @@ function Logo({ compact = false }: { compact?: boolean }) {
 
 function NavList({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
-  const groups = ["Learn", "Insights"] as const;
+  const groups = ["Learn", "Insights", "About"] as const;
 
   return (
     <nav className="space-y-5" aria-label="Main navigation">
